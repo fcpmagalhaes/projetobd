@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class CandidatosConfig(AppConfig):
-    name = 'candidatos'
+    name = 'deputado_estadual'
