@@ -12,19 +12,19 @@ BEGIN
 
 
   SELECT COUNT(DISTINCT Processos_Numero) AS Processos FROM 
-    (SELECT Processos_Numero FROM PROCESSOS_DEP_EST     dep_est WHERE DeputadoEstadual_CPF = cpf
+    (SELECT Processos_Numero FROM Processos_has_DeputadoEstadual  dep_est WHERE DeputadoEstadual_CPF = cpf
       UNION ALL
-     SELECT Processos_Numero FROM PROCESSOS_DEP_FED     dep_est WHERE DeputadoFederal_CPF  = cpf
+     SELECT Processos_Numero FROM Processos_has_DeputadoFederal   dep_est WHERE DeputadoFederal_CPF  = cpf
       UNION ALL
-     SELECT Processos_Numero FROM PROCESSOS_GOVERNADOR  gov     WHERE Governador_CPF       = cpf
+     SELECT Processos_Numero FROM Processos_has_Governador        gov     WHERE Governador_CPF       = cpf
       UNION ALL
-     SELECT Processos_Numero FROM PROCESSOS_PREFEITO    pref    WHERE Prefeito_CPF         = cpf
+     SELECT Processos_Numero FROM Processos_has_Prefeito          pref    WHERE Prefeito_CPF         = cpf
       UNION ALL
-     SELECT Processos_Numero FROM PROCESSOS_PRESIDENTE  pres    WHERE Presidente_CPF       = cpf
+     SELECT Processos_Numero FROM Processos_has_Presidente        pres    WHERE Presidente_CPF       = cpf
       UNION ALL
-     SELECT Processos_Numero FROM PROCESSOS_SENADOR     sen     WHERE Senador_CPF          = cpf
+     SELECT Processos_Numero FROM Processos_has_Senador           sen     WHERE Senador_CPF          = cpf
       UNION ALL
-     SELECT Processos_Numero FROM PROCESSOS_VEREADOR    ver     WHERE Vereador_CPF         = cpf) p;
+     SELECT Processos_Numero FROM Processos_has_Vereador          ver     WHERE Vereador_CPF         = cpf) p;
 
 
 END //
