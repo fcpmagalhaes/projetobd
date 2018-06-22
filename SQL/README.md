@@ -1,6 +1,6 @@
 # Scripts SQL
 
-scriptBD.sql   : Contém o script do BD do projeto;
+scriptBD.sql   : Contém o script do BD;
 
 populateBD.sql : Script para popular o BD acima; 
 
