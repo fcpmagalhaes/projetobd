@@ -1,6 +1,6 @@
 grant all privileges on projetofinal.* to 'root'@'localhost' with grant option;
 
-INSERT INTO Estado (Codigo, Nome, Eleitores, Area, Populacao)
+INSERT INTO ESTADO (Codigo, Nome, Eleitores, Area, Populacao)
 VALUES
     (68,	"Acre",                     10, 10, 10),
     (82,	"Alagoas",                  10, 10, 10),
@@ -31,7 +31,7 @@ VALUES
     (63,	"Tocantins",                10, 10, 10);
     
 
-INSERT INTO Municipio (Codigo, Nome, Eleitores, Area, Populacao, Estado_Codigo)
+INSERT INTO MUNICIPIO (Codigo, Nome, Eleitores, Area, Populacao, Estado_Codigo)
 VALUES
   (68, "Rio Branco",       10, 10, 10, 68),
   (82, "Maceio",           10, 10, 10, 82),
@@ -57,11 +57,11 @@ VALUES
   (69, "Porto Velho",      10, 10, 10, 69),
   (95, "Boa Vista",        10, 10, 10, 95),
   (48, "Florianopolis",    10, 10, 10, 48),
-  (11, "Sao Paulo",        10, 10, 10, 11),
-  (79, "Aracaju",          10, 10, 10, 79),
+  (79, "Sao Paulo",        10, 10, 10, 79),
+  (11, "Aracaju",          10, 10, 10, 11),
   (63, "Palmas",           10, 10, 10, 63);
 
-INSERT INTO Partido (Sigla, Filiados, Nome, Posicao, Logo)
+INSERT INTO PARTIDO (Sigla, Filiados, Nome, Posicao, Logo)
 VALUES
     ("MDB",   2400703,  "Movimento Democratico Brasileiro",               "centro",                                   "/logo/mdb.png"),
     ("PT", 	  1582646,  "Partido dos Trabalhadores",                      "centro-esquerda a esquerda",               "/logo/pt.png"),
@@ -99,7 +99,7 @@ VALUES
     ("NOVO",	9650,   	"Partido Novo",    	                              "direita",                                  "/logo/novo.png"),
     ("PCO",	  2930,   	"Partido da Causa Operaria",	                    "extrema-esquerda",                         "/logo/pco.jpg");
 
-INSERT INTO Vereador (Nome, LocalNasc, Sexo, Escolaridade, CPF, Municipio_Codigo, Partido_Sigla)
+INSERT INTO VEREADOR (Nome, LocalNasc, Sexo, Escolaridade, CPF, Municipio_Codigo, Partido_Sigla)
 VALUES
     ("Adelson Barreto",	 "Rio Branco", 'M', "Superior Completo", 0368686868, 79, "PTB"),
     ("Laercio Oliveira", "Maceio",     'M', "Superior Completo", 0382828282, 79, "SD"),
@@ -110,7 +110,7 @@ VALUES
     ("Joao Daniel",	     "Brasilia",   'M', "Superior Completo", 0361616161, 79, "PT"),
     ("Andre Moura",	     "Vitoria",    'M', "Superior Completo", 0327272727, 79, "PSC");
 
-INSERT INTO Senador(Nome, LocalNasc, Sexo, Escolaridade, CPF, Estado_Codigo, Partido_Sigla)
+INSERT INTO SENADOR (Nome, LocalNasc, Sexo, Escolaridade, CPF, Estado_Codigo, Partido_Sigla)
 VALUES
     ("Gladson Cameli",             "Rio Branco",      'M', "Superior Completo", 0468686868, 68, "PP"),
     ("Jorge Viana",                "Maceio",          'M', "Superior Completo", 0482828282, 82, "PT"),
@@ -157,10 +157,10 @@ VALUES
     ("Raimundo Lir",               "Teresina",        'M', "Superior Completo", 0486868687, 86, "PSD"),
     ("Alvaro Dias",                "Rio de Janeiro",  'M', "Superior Completo", 0421212122, 21, "PODE"),
     ("Gleisi Hoffmann",            "Natal",           'F', "Superior Completo", 0784848484, 84, "PT"),
-    ("Sheev Palpatine",            "Naboo",           'M', "Superior Completo", 0356665544, 68, "PRP"),
     ("Roberto Requiao",            "Porto Alegre",    'M', "Superior Completo", 0451515152, 51, "MDB"),
     ("Armando Monteiro",           "Porto Velho",     'M', "Superior Completo", 0469696970, 69, "PTB"),
     ("Fernando Bezerra Coelho",    "Boa Vista",       'M', "Superior Completo", 0495959596, 95, "MDB"),
+    ("Sheev Palpatine",            "Naboo",           'M', "Superior Completo", 0356665544, 68, "PRP"),
     ("Humberto Costa",             "Florianopolis",   'M', "Superior Completo", 0448484849, 48, "PT"),
     ("Ciro Nogueira",              "Sao Paulo",       'M', "Superior Completo", 0479797980, 79, "PP"),
     ("Elmano Ferrer",              "Aracaju",         'M', "Superior Completo", 0411111111, 11, "PODE"),
@@ -193,7 +193,7 @@ VALUES
     ("Katia Abreu",                "Aracaju",         'F', "Superior Completo", 0411111112, 11, "PDT"),
     ("Vicentinho Alves",           "Palmas",          'M', "Superior Completo", 0463636364, 63, "PR");
 
-INSERT INTO Governador (Nome, LocalNasc, Sexo, Escolaridade, CPF, Estado_Codigo, Partido_Sigla)
+INSERT INTO GOVERNADOR (Nome, LocalNasc, Sexo, Escolaridade, CPF, Estado_Codigo, Partido_Sigla)
 VALUES
     ("Tiao Viana",                 "Rio Branco",      'M', "Superior Completo", 0568686868, 68,  "PT"),
     ("Waldez Góes",                "Maceio",          'M', "Superior Completo", 0582828282, 82,  "PDT"),
@@ -223,7 +223,7 @@ VALUES
     ("Belivaldo Chagas",           "Aracaju",         'M', "Superior Completo", 0511111111, 11,  "PSD"),
     ("Mauro Carlesse",             "Palmas",          'M', "Superior Completo", 0563636363, 63,  "PHS");
 
-INSERT INTO Presidente (Nome, LocalNasc, Sexo, Escolaridade, CPF, Partido_Sigla)
+INSERT INTO PRESIDENTE (Nome, LocalNasc, Sexo, Escolaridade, CPF, Partido_Sigla)
 VALUES
     ("Romero Juca",                      "Rio Branco",     'M', "Superior Completo", 0768686868, "MDB"),
     ("Gleisi Hoffmann",                  "Maceio",         'F', "Superior Completo", 0782828282, "PT"),
@@ -259,22 +259,22 @@ VALUES
     ("Joao Dionísio Amoedo",             "Salvador",       'M', "Superior Completo", 0771717172, "NOVO"),
     ("Rui Costa Pimenta",                "Fortaleza",      'M', "Superior Completo", 0785858586, "PCO");
 
-INSERT INTO Processos (Numero, Juiz, Forum, Delito) VALUES
-  (28069, "Sergio Moro", "13a Vara Criminal de Curitiba", "Atentado ao pudor"),
-  (55345, "Foo Bar", "Enesimo Tribunal do Acre", "Embriagues publica"),
-  (20280, "Fus Ro Dah", "Tribunal de Justica do DF", "Excesso de velocidade");
-
-INSERT INTO Processos_has_Senador (Processos_Numero, Senador_CPF) VALUES
-  (55345, 468686868),
-  (28069, 468686868),
-  (20280, 471717171);
-
-INSERT INTO Projetos (Numero, Data, Descrição) VALUES
-  (1, '1985-01-15', "Projeto de auxilio aos corruptos"),
+INSERT INTO PROJETOS (Numero, Data, Descricao) VALUES
+  (1, '1888-11-15', "Projeto de auxilio aos corruptos"),
   (66, '2005-05-15', "Ordem para eliminar todos os jedi"),
   (666, '2016-03-16', "Chamar o Bessias"),
   (665, '2013-11-24', "Acobertar o caso do helicoptero");
 
-INSERT INTO Senador_has_Projetos (Senador_CPF, Projetos_Numero) VALUES
+INSERT INTO PROJETOS_SENADOR (Senador_CPF, Projetos_Numero) VALUES
   (0356665544, 66),
   (0498989899, 665);
+
+INSERT INTO PROCESSOS (Numero, Juiz, Forum, Delito) VALUES
+  (28069, "Sergio Moro", "13a Vara Criminal de Curitiba", "Atentado ao pudor"),
+  (55345, "Foo Bar", "Enesimo Tribunal do Acre", "Embriagues publica"),
+  (20280, "Fus Ro Dah", "Tribunal de Justica do DF", "Excesso de velocidade");
+
+INSERT INTO PROCESSOS_SENADOR (Processos_Numero, Senador_CPF) VALUES
+  (55345, 468686868),
+  (28069, 468686868),
+  (20280, 471717171);
