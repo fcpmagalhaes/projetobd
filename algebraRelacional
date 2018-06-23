@@ -1,0 +1,102 @@
+-- Executar no site: https://dbis-uibk.github.io/relax/calc.htm
+-- Com 'gist id': fe81084a428fff5c80c7bb2546d0271c
+
+-- Representatividade Feminina por Partido
+
+π Partido <- sigla, Mulheres <- count (
+    ρ part (pi sigla Partido)
+    ⨝ part.sigla = partido_sigla
+        (ρ politicos
+            ((ρ pres    γ partido_sigla; count(*)->count (σ sexo = 'F' Presidente))       ∪
+             (ρ ver     γ partido_sigla; count(*)->count (σ sexo = 'F' Vereador))         ∪
+             (ρ pref    γ partido_sigla; count(*)->count (σ sexo = 'F' Prefeito))         ∪
+             (ρ dep_fed γ partido_sigla; count(*)->count (σ sexo = 'F' DeputadoFederal))  ∪
+             (ρ dep_est γ partido_sigla; count(*)->count (σ sexo = 'F' DeputadoEstadual)) ∪
+             (ρ sen     γ partido_sigla; count(*)->count (σ sexo = 'F' Senador))          ∪
+             (ρ gov     γ partido_sigla; count(*)->count (σ sexo = 'F' Governador)))))
+
+-- Densidade de Candidatos por Estado
+
+γ Estado.nome; sum(count) -> total
+    (Estado ⨝ codigo = pol.estado_codigo
+        (ρ pol
+            (γ partido_sigla, estado_codigo; count(*) -> count Senador)             ∪
+            (γ partido_sigla, estado_codigo; count(*) -> count DeputadoFederal)        ∪
+            (γ partido_sigla, estado_codigo; count(*) -> count Presidente)            ∪
+            (γ partido_sigla, estado_codigo; count(*) -> count Governador)
+            )
+        ⨝ pol.partido_sigla = Partido.sigla Partido
+    )
+
+-- Distribuição Partidária por Estado
+
+pi Estado.nome -> estado, Partido.sigla -> partido, count
+    (Estado ⨝ codigo = pol.estado_codigo
+        (ρ pol
+            (γ partido_sigla, estado_codigo; count(*) -> count Senador)             ∪
+            (γ partido_sigla, estado_codigo; count(*) -> count DeputadoFederal)        ∪
+            (γ partido_sigla, estado_codigo; count(*) -> count Presidente)            ∪
+            (γ partido_sigla, estado_codigo; count(*) -> count Governador)
+            )
+        ⨝ pol.partido_sigla = Partido.sigla Partido
+    )
+
+-- Processos por Cargo
+
+(γ count(*) -> Presidente
+    ((ρ proc Processos_has_Presidente) 
+        ⨝ proc.Presidente_cpf = pres.cpf
+            (ρ pres Presidente)))
+            ⟗
+    
+(γ count(*) -> Vereador
+    ((ρ proc Processos_has_Vereador) 
+        ⨝ proc.Vereador_cpf = ver.cpf
+            (ρ ver Vereador)))
+            ⟗
+
+(γ count(*) -> DeputadoEstadual
+    ((ρ proc Processos_has_DeputadoEstadual) 
+        ⨝ proc.DeputadoEstadual_cpf = dep_est.cpf
+            (ρ dep_est DeputadoEstadual)))
+            ⟗
+    
+(γ count(*) -> DeputadoFederal
+    ((ρ proc Processos_has_DeputadoFederal) 
+        ⨝ proc.DeputadoFederal_cpf = dep_fed.cpf
+            (ρ dep_fed DeputadoFederal)))
+            ⟗
+
+(γ count(*) -> Senador
+    ((ρ proc Processos_has_Senador) 
+        ⨝ proc.Senador_cpf = sen.cpf
+            (ρ sen Senador)))
+            ⟗
+    
+(γ count(*) -> Prefeito
+    ((ρ proc Processos_has_Prefeito) 
+        ⨝ proc.prefeito_cpf = pref.cpf
+            (ρ pref Prefeito)))
+            ⟗
+
+(γ count(*) -> Governador
+    ((ρ proc Processos_has_Governador) 
+        ⨝ proc.Governador_cpf = gov.cpf
+            (ρ gov Governador)))
+        
+
+-- Procedure: Processos Contra cpf
+
+π Processos
+    (γ sum(total) -> Processos
+        (γ count(*) -> total (σ Presidente_cpf       = 782828282 Processos_has_Presidente)          ∪
+         γ count(*) -> total (σ Vereador_cpf         = 782828282 Processos_has_Vereador)            ∪
+         γ count(*) -> total (σ prefeito_cpf         = 782828282 Processos_has_Prefeito)         ∪
+         γ count(*) -> total (σ DeputadoFederal_cpf  = 782828282 Processos_has_DeputadoFederal)  ∪
+         γ count(*) -> total (σ DeputadoEstadual_cpf = 782828282 Processos_has_DeputadoEstadual) ∪
+         γ count(*) -> total (σ Governador_cpf       = 782828282 Processos_has_Governador)          ∪
+         γ count(*) -> total (σ Senador_cpf          = 782828282 Processos_has_Senador) 
+        ))
+        
+
+
